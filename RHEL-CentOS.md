@@ -7,8 +7,20 @@
 ```
 docker run -it --rm registry.access.redhat.com/rhel7.6 bash
 ```
+## RHEL을 CentOS로 사용하기
+### RHEL subscription warning ignore
 
-## 로컬 리포 생성 / Create Local repo on disk or file system
+```
+#subscription-manager 삭제
+yum remove -y subscription-manager
+
+# Set Disable
+sed -i -e 's,\(^enabled\)=.*,\1=0,g' \
+  /etc/yum/pluginconf.d/subscription-manager.conf
+```
+
+
+### 로컬 리포 생성 / Create Local repo on disk or file system
 * 특정 디렉토리에 파일을 풀어 줌.
 
 ```
@@ -21,7 +33,7 @@ rsync -avHPS /tmp/mnt/ /share/CentOS/6.8/os/x86_64/
 umount /tmp/mnt
 ```
 
-## 리포 설정 파일 수정
+### 리포 설정 파일 수정
 * /etc/yum.repos.d/centos.repo
   * 리포 주소는 카카오쪽으로 설정
 ```
@@ -71,7 +83,7 @@ priority=3
 gpgcheck=0
 ```
 
-## docker-ce추가
+### docker-ce추가
 
 * original code from : https://download.docker.com/linux/centos/docker-ce.repo
   * ```wget -O /etc/yum.repos.d/docker-ce.repo https://download.docker.com/linux/centos/docker-ce.repo```
@@ -163,13 +175,4 @@ gpgkey=https://download.docker.com/linux/centos/gpg
 
 ```
 
-## RHEL subscription warning ignore
 
-```
-#subscription-manager 삭제
-yum remove -y subscription-manager
-
-# Set Disable
-sed -i -e 's,\(^enabled\)=.*,\1=0,g' \
-  /etc/yum/pluginconf.d/subscription-manager.conf
-```
