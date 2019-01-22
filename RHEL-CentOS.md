@@ -162,3 +162,14 @@ gpgcheck=1
 gpgkey=https://download.docker.com/linux/centos/gpg
 
 ```
+
+## RHEL subscription warning ignore
+
+```
+#subscription-manager 삭제
+yum remove -y subscription-manager
+
+# Set Disable
+sed -i -e 's,\(^enabled\)=.*,\1=0,g' \
+  /etc/yum/pluginconf.d/subscription-manager.conf
+```
