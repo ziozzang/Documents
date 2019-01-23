@@ -4,7 +4,7 @@
 ```
 # 우분투 기준임.
 # 필수 라이브러리 설치
-apt install -fy socat
+apt install -fy socat curl cron
 curl -L get.acme.sh | bash
 
 # 기 발급된 도메인 인증서를 갱신 함 (Crontab 내용임)
@@ -16,7 +16,7 @@ DOMAIN="foo.com"
   -d *.bar.${DOMAIN} \
   --keylength 2048
 
-# crt 파일 생성.
+# crt 파일 생성. (for Haproxy or so...)
 cat /root/.acme.sh/${DOMAIN}/fullchain.cer > ${DOMAIN}.crt
 cat /root/.acme.sh/${DOMAIN}/fullchain.cer /root/.acme.sh/${DOMAIN}/${DOMAIN}.key  > ${DOMAIN}.pem
 cat /root/.acme.sh/${DOMAIN}/${DOMAIN}.key  > ${DOMAIN}.key
