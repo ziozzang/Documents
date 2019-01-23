@@ -29,4 +29,17 @@ cat /root/.acme.sh/${DOMAIN}/${DOMAIN}.key  > ${DOMAIN}.key
   --keylength 2048
 # EC-256알고리즘을 사용 할수도 있음
 #  --keylength ec-256
+
 ```
+
+* 클라우드 플레어의 경우
+
+```
+export CF_Key="sdfsdfsdfljlbjkljlkjsdfoiwje"
+export CF_Email="xxxx@sss.com"
+
+# 옵션
+--dns dns_cf
+```
+
+
