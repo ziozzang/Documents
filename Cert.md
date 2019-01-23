@@ -41,5 +41,6 @@ export CF_Email="xxxx@sss.com"
 # 옵션
 --dns dns_cf
 ```
-
+* 주) 서비스 프로바이더 별 설정
+  * https://github.com/Neilpang/acme.sh/tree/master/dnsapi
 
